@@ -12,7 +12,9 @@ type (
 	}
 )
 
-func Middleware(chain ...*Ware) http.Handler {
+var Middleware = middleware(One, Two)
+
+func middleware(chain ...*Ware) http.Handler {
 	for i := 0; i < len(chain) - 1; i++ {
 		chain[i].Next = chain[i + 1]
 	}
