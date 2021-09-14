@@ -1,28 +1,32 @@
 package middleware
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/paganjoshua/jynx.dev/pkg/router"
 )
 
 type (
-	Ware struct {
+	Middleware struct {
 		Next http.Handler
 		Log  string
 	}
+	Linker interface {
+		Link(http.Handler)
+		ServeHTTP(http.ResponseWriter, *http.Request)
+	}
 )
 
-var Middleware = middleware(One, Two)
-
-func middleware(chain ...*Ware) http.Handler {
-	for i := 0; i < len(chain) - 1; i++ {
-		chain[i].Next = chain[i + 1]
+func (m *Middleware) NewMiddleware(s *router.Router, chain ...func() Linker) http.Handler {
+	b := s.Handler
+	for i := len(chain) - 1; i >= 0; i-- {
+		a := chain[i]()
+		a.Link(b)
+		b = a
 	}
-	chain[len(chain) - 1].Next = http.DefaultServeMux
-	return chain[0]
+	return b
 }
 
-func (m *Ware) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	log.Println(m.Log)
-	m.Next.ServeHTTP(w, r)
+func (w *Middleware) Link(ch http.Handler) {
+	w.Next = ch
 }
