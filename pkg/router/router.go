@@ -19,7 +19,9 @@ func (r *Router) NewRouter() {
 	router := httprouter.New()
 	router.GET("/", r.HandleHome)
 	router.GET("/about", r.HandleAbout)
-	router.GET("/login", r.HandleLogin)
+	router.GET("/system", r.HandleSystem)
+	router.ServeFiles("/client/*filepath", http.Dir("client"))
+	router.ServeFiles("/css/*filepath", http.Dir("assets/css"))
 
 	r.Handler = router
 }
@@ -40,10 +42,10 @@ func (rtr Router) HandleAbout(w http.ResponseWriter, r *http.Request, _ httprout
 	home.Template.Execute(w, home)
 }
 
-func (rtr Router) HandleLogin(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+func (rtr Router) HandleSystem(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var home template.View
-	home.Template = rtr.Templates["login.html"]
-	home.Title = "Login"
+	home.Template = rtr.Templates["system.html"]
+	home.Title = "System"
 
 	home.Template.Execute(w, home)
 }

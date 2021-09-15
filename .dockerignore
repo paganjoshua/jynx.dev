@@ -1,4 +1,6 @@
 .git*/
 .dockerignore
+client/dist/
+client/node_modules/
 Dockerfile
 docs/

@@ -1,4 +1,19 @@
 ##
+## React
+##
+FROM node:lts-buster as react
+
+WORKDIR /app/client
+
+COPY client/package*.json ./
+
+RUN npm install
+
+COPY client .
+
+RUN npm run build
+
+##
 ## Build
 ##
 FROM golang:1.17-buster AS build
@@ -27,6 +42,8 @@ COPY --from=build /etc/passwd /etc/passwd
 COPY --from=build /etc/group /etc/group
 
 COPY --from=build /app/assets/. /assets/
+
+COPY --from=react /app/client/dist /client/dist/
 
 COPY --from=build /wizbiz /wizbiz
 
