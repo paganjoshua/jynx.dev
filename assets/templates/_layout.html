@@ -2,12 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{{.Title}}</title>
-		<link href="/css/layout.css" rel="stylesheet" />
+		<link href="/css/layout.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		{{template "_header.html" .}}
 		{{template "content" .}}
 		{{template "_footer.html" .}}
+		<script type="text/javascript" >
+			document.querySelectorAll('li').forEach(li => {
+				if (window.location.pathname == li.childNodes[0].attributes.href.value) {
+					li.classList.toggle("active");
+				}
+			})
+		</script>
 	</body>
 </html>
