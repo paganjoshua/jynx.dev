@@ -1,10 +1,11 @@
 import * as React from "react"
+import Square from "./components/Square";
 
 const App = () => {
 	console.log("RENDER App");
 	return (
 		<div>
-			<h1>SYSTEM</h1>
+			<Square />
 		</div>
 	)
 }

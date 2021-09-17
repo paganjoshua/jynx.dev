@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>React Dev Server</title>
+		<link href="/css/layout.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+    <header >
+      <h1>jynx.dev</h1>
+      <nav >
+        <ul >
+          <li class="" ><a href="/">Home</a></li>
+          <li ><a href="/about">About</a></li>
+          <li ><a href="/system">System</a></li>
+        </ul>
+      </nav>
+    </header>
+   <div class="content" >
+      <div id="root"></div>
+      <script type="text/javascript" src="/client/dist/bundle.js"></script>
+    </div>
+    <footer >
+      <h4>you owe me a coffee</h4>
+    </footer>
+
+		<script type="text/javascript" >
+			document.querySelectorAll('li').forEach(li => {
+				if (window.location.pathname == li.childNodes[0].attributes.href.value) {
+					li.classList.toggle("active");
+				}
+			})
+		</script>
+	</body>
+</html>
