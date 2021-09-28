@@ -16,7 +16,7 @@ module.exports = {
     //contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     hot: 'only',
-    port: 5000,
+    port: 5001,
     proxy: {
       '/css': 'http://localhost:3000'
     },
@@ -29,7 +29,7 @@ module.exports = {
       title: 'Development',
       template: path.resolve(__dirname, 'dev.html'),
     })
-  ],
+  ].filter(Boolean),
 	module: {
 		rules: [
 			{
@@ -39,7 +39,7 @@ module.exports = {
             {
               loader: 'babel-loader',
               options: {
-                plugins: [isDev && require('react-refresh/babel')]
+                plugins: [isDev && require('react-refresh/babel')].filter(Boolean)
               }
             }
           ]

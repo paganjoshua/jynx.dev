@@ -8,6 +8,12 @@ body,
 	padding: 0;
 	font-family: system-ui;
 	--gutter: 1.5vw;
+	--dev: rgb(156, 0, 0);
+	--dev-light: rgba(156, 0, 0, 0.1);
+	--deploy: rgb(150, 110, 0);
+	--deploy-light: rgba(150, 110, 0, 0.1);
+	--nginx: rgb(0, 150, 57);
+	--nginx-light: rgba(0, 150, 57, 0.1);
 }
 
 * {
@@ -20,6 +26,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	height: auto;
 }
 
 .content {
@@ -80,6 +87,74 @@ a {
 	color: gainsboro;
 }
 
+.node {
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 3px 5px rgb(0 0 0 / 0.2);
+	color: rgba(0, 0, 0, 0.9);
+	margin: var(--gutter);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.child {
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(0 0 0 / 0.05);
+	border-bottom: none;
+	box-shadow: 0px 3px 5px rgb(0 0 0 / 0.1);
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.layer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content-padding {
+	padding: calc(.5 * var(--gutter));
+}
+
+.toplevel {
+	padding: calc(.75 * var(--gutter));
+	border: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.inner {
+	display: flex;
+	flex-direction: row;
+}
+
+.wrapper {
+	border: none;
+	border-bottom-right-radius: inherit;
+	border-bottom-left-radius: inherit;
+	padding: calc(.25 * var(--gutter));
+}
+
+.github {
+	display: grid;
+	grid-template-areas: 
+	   ". main"
+	   "dev .";
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+}
+.github-main {
+	grid-area: main;
+	margin: calc(.5 * var(--gutter));
+}
+.github-dev {
+	grid-area: dev;
+	margin: calc(.5 * var(--gutter));
+}
+
 footer {
 	height: 3rem;
 	display: flex;
@@ -88,5 +163,6 @@ footer {
 	border-top: 1px solid black;
 }
 
-@media (max-height: 700px) {
+@media (max-width: 400px) {
+	--gutter: 2.5vw;
 }
