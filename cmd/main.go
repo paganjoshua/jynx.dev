@@ -15,6 +15,6 @@ func main() {
 
 	s.Mux = s.NewMiddleware(&s.Router, s.Gzip)
 	log.Println("yo")
-	log.Fatal(http.ListenAndServe(":3000", s.Mux)) 
+	log.Fatal(http.ListenAndServe(":8080", s.Mux)) 
 }
 

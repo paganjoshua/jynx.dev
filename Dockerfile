@@ -49,6 +49,6 @@ COPY --from=build /wizbiz /wizbiz
 
 USER jynx
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["/wizbiz"]
