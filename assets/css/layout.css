@@ -87,6 +87,41 @@ a {
 	color: gainsboro;
 }
 
+main {
+	display: grid;
+	margin: 4vw;
+	grid-template-rows: auto;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: calc(1.25 * var(--gutter));
+}
+
+article a {
+	min-height: 12rem;
+	border-color: var(--deploy);
+	border-radius: 2px;
+	border-top: none;
+	box-shadow: 0px 3px 5px rgb(0 0 0 / 0.2);
+	color: var(--deploy);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	transition: all .05s ease-in-out;
+}
+
+article a:hover {
+	border-color: var(--deploy);
+	color: var(--dev);
+	box-shadow: 0px 5px 7px rgb(0 0 0 / 0.3);
+	transform: scale(1.01);
+}
+
+.title {
+	color: inherit;
+	font-size: 1.35rem;
+	padding-bottom: calc(.75 * var(--gutter));
+}
+
 .node {
 	border: none;
 	border-radius: 5px;
@@ -163,6 +198,13 @@ footer {
 	border-top: 1px solid black;
 }
 
-@media (max-width: 400px) {
-	--gutter: 2.5vw;
+@media (max-width: 600px) {
+	main {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media (min-width: 1200px) {
+	main {
+	}
 }
