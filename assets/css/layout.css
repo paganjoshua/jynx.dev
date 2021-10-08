@@ -11,7 +11,7 @@ body,
 	--dev: rgb(156, 0, 0);
 	--dev-light: rgba(156, 0, 0, 0.1);
 	--deploy: rgb(150, 110, 0);
-	--deploy-light: rgba(150, 110, 0, 0.1);
+	--deploy-light: rgb(244, 240, 229);
 	--nginx: rgb(0, 150, 57);
 	--nginx-light: rgba(0, 150, 57, 0.1);
 }
@@ -38,16 +38,18 @@ header {
 	height: auto;
 	padding: 0 var(--gutter);
 	position: sticky;
+	top: 0;
+	z-index: 10;
 	background: var(--deploy-light);
 	color: var(--dev);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-bottom: 1.5vh;
 	box-shadow: 0 3px 5px 0 rgb(0 0 0 / 0.3);
 }
 
 header div {
+	margin-bottom: 12rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -123,6 +125,8 @@ a {
 	margin-top: 0;
 	padding: 2rem;
 	width: 100%;
+	position: absolute;
+	z-index: 20;
 	display: flex;
 	place-content: center;
 	fill: rgba(156, 0, 0, 0.2);
