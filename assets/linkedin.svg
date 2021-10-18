@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="100" height="80" version="1.1" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(.48135 0 0 .45423 .0022451 6.4332e-6)" fill="#00f">
+  <rect x="6.6283" y="10.408" width="150.17" height="155.78" fill="#fff" stroke="#0a66c2" stroke-width="2.1539"/>
+  <path d="m154.79 0.80506h-141.5c-7.1346 0-12.486 5.606-12.486 12.458v149.49c0 6.8516 5.3509 12.458 12.486 12.458h142.1c6.54 0 12.486-5.606 12.486-12.458v-149.49c-0.59459-6.8517-5.9454-12.458-13.08-12.458zm-104.64 148.86h-24.377v-83.466h24.971v83.466zm-12.486-94.678c-7.7291 0-14.269-6.8517-14.269-14.949 0-8.0975 6.54-14.949 14.269-14.949 7.729 0 14.269 6.8517 14.269 14.949 0 8.0974-5.9454 14.949-14.269 14.949zm105.23 94.678h-24.377v-40.488c0-9.3433 0-21.801-13.08-21.801-13.08 0-14.864 10.589-14.864 21.178v41.11h-24.377v-83.466h23.782v11.212h0.59454c3.5672-6.2288 11.296-13.703 23.188-13.703 24.971 0 29.727 17.441 29.727 39.865v46.093z" fill="#0a66c2" stroke="#000" stroke-opacity="0" stroke-width="1.6101px"/>
+  <ellipse cx="191.93" cy="159.49" rx="14.74" ry="15.556" fill="#fff" stroke="#0a66c2" stroke-opacity=".0015253" stroke-width="2.1539"/>
+  <g transform="translate(-3.3244)" stroke="#0a66c2">
+   <ellipse cx="195.25" cy="159.49" rx="14.74" ry="15.556" fill="#fff" stroke-width="2.1539"/>
+   <text transform="scale(.97212 1.0287)" x="192.44081" y="164.00722" fill="#0a66c2" font-family="system-ui" font-size="25.446px" stroke-width=".63615" style="line-height:1.25" xml:space="preserve"><tspan x="192.44081" y="164.00722" fill="#0a66c2" stroke="#0a66c2" stroke-width=".63615">R</tspan></text>
+  </g>
+ </g>
+</svg>
