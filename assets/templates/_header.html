@@ -1,10 +1,12 @@
+{{template "header" .}}
+{{define "header"}}
 <header >
 	<div class="top-nav" >
 		<h1>jynx.dev</h1>
 		<nav class="icon-nav" >
 			<ul >
 				<li class="" >
-				<a href="/" >
+				<a class="lifter" href="https://linkedin.com/in/joshuajpagan" target="_blank" rel="noopener noreferrer" >
 <svg width="100" height="auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
  <g transform="matrix(.48135 0 0 .45423 .0022451 6.4332e-6)" fill="#00f">
   <rect x="6.6283" y="10.408" width="150.17" height="155.78" fill="#fff" stroke="#0a66c2" stroke-width="2.1539"/>
@@ -19,7 +21,7 @@
 				</a>
 				</li>
 				<li >
-				<a href="/about">
+				<a class="lifter" href="https://github.com/paganjoshua" target="_blank" rel="noopener noreferrer">
 <svg version="1.1" viewBox="0 0 100.39 82.618" xmlns="http://www.w3.org/2000/svg">
 	<g transform="translate(704.86 -152.45)">
 		<rect x="-673.58" y="177.7" width="36.243" height="15.319" style="fill:#fff;stroke-opacity:.0015253;stroke:#0a66c2"/>
@@ -43,12 +45,15 @@
 	</div>
 	<nav class="main-nav" >
 		<ul >
-			<li ><a href="/">Home</a></li>
-			<li ><a href="/about">About</a></li>
-			<li ><a href="/system">System</a></li>
+			<li ><a class="lifter" href="/">Home</a></li>
+			<li ><a class="lifter" href="/system">System</a></li>
+			<li ><a class="lifter" href="/assets/resume.pdf">Resume</a></li>
 		</ul>
 	</nav>
 </header>
+{{end}}
+{{template "logo" .}}
+{{define "logo"}}
 <div class="logo" >
 	<svg width="75.984mm" height="41.048mm" version="1.1" viewBox="0 0 75.984 41.748" xmlns="http://www.w3.org/2000/svg">
 		<g transform="translate(-14.473 -226.09)" stroke="#000">
@@ -64,7 +69,7 @@
 </div>
 <script type="text/javascript">
 	window.addEventListener("scroll", e => {
-		let originalMargin = 12;
+		let originalMargin = 9;
 		let scroll = document.documentElement.scrollTop;
 		let topNav = document.querySelector(".top-nav");
 		let computedScale = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -75,3 +80,4 @@
 		}
 	});
 </script>
+{{end}}

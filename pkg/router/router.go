@@ -9,8 +9,8 @@ import (
 )
 
 type Router struct {
-	Handler		http.Handler
-	Templates	template.TemplateMap
+	Handler   http.Handler
+	Templates template.TemplateMap
 }
 
 func (r *Router) NewRouter() {
@@ -22,6 +22,7 @@ func (r *Router) NewRouter() {
 	router.GET("/system", r.HandleSystem)
 	router.ServeFiles("/client/*filepath", http.Dir("client"))
 	router.ServeFiles("/css/*filepath", http.Dir("assets/css"))
+	router.ServeFiles("/assets/*filepath", http.Dir("assets"))
 
 	r.Handler = router
 }
