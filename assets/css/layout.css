@@ -8,6 +8,8 @@ body,
 	padding: 0;
 	font-family: system-ui;
 	--gutter: 1.5vw;
+	/* headerHeight always to be 'rem' for script calculations*/
+	--headerHeight: 5rem;
 	--darkness: rgb(26, 26, 26);
 	--silver: rgb(198, 190, 168);
 	--dev: rgb(156, 0, 0);
@@ -40,9 +42,6 @@ body {
 header {
 	height: auto;
 	padding: 0 var(--gutter);
-	position: sticky;
-	top: 0;
-	z-index: 10;
 	background: var(--deploy-light);
 	color: var(--dev);
 	display: flex;
@@ -51,15 +50,29 @@ header {
 	box-shadow: 0 3px 5px 0 rgb(0 0 0 / 0.3);
 }
 
-.about-top-header {
-	height: 5rem;
+.top-header {
+	height: var(--headerHeight);
 	background: var(--dev);
 	color: var(--deploy-light);
+	position: sticky;
+	top: 0;
+}
+
+.home-top-header {
+	display: flex;
+	z-index: 0;
+	/* Negative margin-top offsets 2nd header height for scroll calculations*/
+	margin-top: calc(-1 * var(--headerHeight));
+}
+
+.bottom-header {
+	z-index: 1;
 }
 
 header .top-nav {
-	height: 100%;
-	margin-bottom: 9rem;
+	height: var(--headerHeight);
+	position: sticky;
+	top: 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -86,9 +99,11 @@ nav {
 }
 
 .main-nav {
-	height: 5rem;
+	height: var(--headerHeight);
 	font-weight: 700;
 	justify-content: center;
+	position: sticky;
+	top: 0;
 }
 
 ul {
@@ -145,11 +160,8 @@ header a {
 
 .logo {
 	place-self: center;
-	margin: 3rem;	
-	margin-top: 0;
 	padding: 2rem;
-	position: absolute;
-	z-index: 20;
+	padding-top: 0;
 	display: flex;
 	place-content: center;
 	fill: rgba(156, 0, 0, 0.2);
@@ -413,6 +425,27 @@ article a:hover {
 .github-dev {
 	grid-area: dev;
 	margin: calc(.5 * var(--gutter));
+}
+
+.certs {
+	background-color: var(--dev);
+	padding: 4rem;
+	margin: calc(-1 * var(--gutter));
+	margin-top: 0;
+	margin-bottom: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.certs .badge {
+	width: 40vw;
+}
+
+.certs .cs {
+	width: 10vw;
+	height: 10vw;
+	align-self: center;
 }
 
 footer {
