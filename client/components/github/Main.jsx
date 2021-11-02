@@ -5,7 +5,7 @@ const Main = (props) => {
   const id = "github-main"
   const node = {
     arrows: [
-      {color: 'var(--deploy)', light:'var(--deploy-light)', start: id, end: 'dockerhub', startAnchor: 'right', endAnchor: 'left', },
+      {color: 'var(--deploy)', light:'var(--deploy-light)', start: id, end: 'dockerhub', startAnchor: 'auto', endAnchor: 'auto', },
     ],
     id: id, 
     className: 'github-main',

@@ -18,7 +18,7 @@ module.exports = {
     hot: 'only',
     port: 5001,
     proxy: {
-      '/css': 'http://localhost:3000'
+      '/css': 'http://localhost:8080'
     },
     static: './dist'
   },

@@ -1,14 +1,13 @@
 import React from 'react'
-import Node from '../Node.jsx'
 
 function Golang(props) {
   return (
-	<Node {...props} content={props.content} >
+	<div className={"wrapper-content " + props.content.id} >
 	    {props.children}
-	  <div className={"wrapper"} style={{background: 'rgb(0, 125, 156)', color: 'white'}} >
-	    Golang
-	  </div>
-	</Node>
+		<div className={"wrapper"} style={{background: 'rgb(0, 125, 156)', color: 'white'}} >
+			Golang
+		</div>
+	</div>
   )
 }
 

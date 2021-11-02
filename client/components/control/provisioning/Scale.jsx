@@ -1,26 +1,26 @@
 import React from 'react'
 import Node from '../../Node.jsx'
 
-const Deploy = (props) => {
-  const id = "control-deploy"
+const Scale = (props) => {
+  const id = "provisioning-scale"
   const node = {
     arrows: [
-      {color: 'var(--deploy)', light: 'var(--deploy-light)', start: 'control-deploy', end: 'website', startAnchor: 'auto', endAnchor: 'auto', 
+      {color: 'brown', light: 'var(--ansible-light)', start: 'provisioning-scale', end: 'webserver', startAnchor: 'auto', endAnchor: 'auto', 
 	      headSize: 4, _cpx1Offset: 0, _cpx2Offset: 0
       },
     ],
     id: id, 
-    className: 'deploy',
+    className: 'provisioning-scale',
     lighten: 'lightgrey',
     style: {...props.style},
   }
   return (
     <Node {...props} content={node} >
       <div className={"content-padding"} >
-	Deploy
+      	Scale
       </div>
     </Node>
   )
 }
 
-export default Deploy
+export default Scale

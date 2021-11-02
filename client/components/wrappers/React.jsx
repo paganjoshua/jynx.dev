@@ -1,14 +1,13 @@
 import React from 'react'
-import Node from '../Node.jsx'
 
 function ReactWrapper(props) {
   return (
-	<Node {...props} content={props.content} >
+	<div className={"wrapper-content " + props.content.id} >
 	    {props.children}
-	  <div className={"wrapper"} style={{background: 'rgb(97, 218, 251)', color: 'white'}} >
-	    React
-	  </div>
-	</Node>
+		<div className={"wrapper"} style={{background: 'rgb(97, 218, 251)', color: 'white'}} >
+			React
+		</div>
+	</div>
   )
 }
 

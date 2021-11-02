@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactWrapper from '../wrappers/React.jsx'
+import DraggableNode from '../DraggableNode.jsx'
 
 const System = (props) => {
+  const [s, setS] = useState({})
   const id = "system"
   const node = {
     arrows: [
@@ -13,11 +15,15 @@ const System = (props) => {
     style: {},
   }
   return (
-    <ReactWrapper {...props} content={node} >
-      <div className={"content-padding"} >
-	System
-      </div>
-    </ReactWrapper>
+    <div className={"system-wrapper"}>
+      <DraggableNode setS={setS} {...props} node={node} >
+        <ReactWrapper {...props} content={node} >
+          <div className={"content-padding"} >
+            System
+          </div>
+        </ReactWrapper>
+      </DraggableNode>
+    </div>
   )
 }
 

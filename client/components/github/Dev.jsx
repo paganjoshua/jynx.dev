@@ -5,10 +5,10 @@ const Dev = (props) => {
   const id = "github-dev"
   const node = {
     arrows: [
-      {color: 'var(--dev)', light:'var(--dev-light)', start: id, end: 'control-nginx', startAnchor: 'right', endAnchor: 'top', 
+      {color: 'var(--dev)', light:'var(--dev-light)', start: id, end: 'control-nginx', startAnchor: 'auto', endAnchor: 'auto', 
 	      headSize: 3,
       },
-      {color: 'var(--deploy)', light:'var(--deploy-light)', start: id, end: 'github-main', startAnchor: 'top', endAnchor: 'left', 
+      {color: 'var(--deploy)', light:'var(--deploy-light)', start: id, end: 'github-main', startAnchor: 'auto', endAnchor: 'auto', 
 	headSize: 3, dashness: true,
       },
     ],

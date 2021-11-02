@@ -18,13 +18,17 @@ const Webserver = (props) => {
     y: 520,
   }
   return (
-    <DraggableNode setS={setS} {...props} node={node} >
-      <div >
-	Webserver
-	<Website s={s} parent={node} {...props} />
-	<Nginx s={s} parent={node} {...props} />
-      </div>
-    </DraggableNode>
+    <div className={"layer webserver-wrapper"} >
+      <DraggableNode setS={setS} {...props} node={node} >
+        <div >
+          {/* <div>
+            Webserver
+          </div> */}
+          <Website s={s} parent={node} {...props} />
+          <Nginx s={s} parent={node} {...props} />
+        </div>
+      </DraggableNode>
+    </div>
   )
 }
 

@@ -21,19 +21,15 @@ const Control = (props) => {
   }
   return (
     <DraggableNode setS={setS} {...props} node={node} >
-      <div >
-	Control
-      <div style={{display: 'flex', flexDirection: 'row'}}  >
-	<div style={{display: 'grid', gridTemplateRows: '1fr 1fr'}}>
-	  <Registry parent={node} s={s} {...props} />
-	  <Development parent={node} s={s} {...props} />
-	</div>  
-	<Provisioning parent={node} s={s} {...props} />
-	<div style={{display: 'grid', gridTemplateRows: '1fr 1fr'}}>
-	  <Nginx parent={node} s={s} {...props} />
-	  <Webhooks parent={node} s={s} {...props} />
-	</div>
-      </div>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
+        {/* <div>
+	        Control
+        </div> */}
+        <Registry parent={node} s={s} {...props} />
+        <Provisioning parent={node} s={s} {...props} />
+        <Development parent={node} s={s} {...props} />
+        <Nginx parent={node} s={s} {...props} />
+        <Webhooks parent={node} s={s} {...props} />
       </div>
     </DraggableNode>
   )

@@ -1,14 +1,26 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import { SelectedContext } from './Square.js'
-import Xarrow from 'react-xarrows'
+import { ArrowsContext } from './Arrows.jsx'
 import { rename } from '../utils/rename'
 
 function Node({children, content, s, setS, parent=null}) {
+
+
   const [selected, setSelected] = useContext(SelectedContext); 
-  const [arrows, setArrows] = useState(content.arrows)
-  const arrowsRef = useRef(arrows)
+  const [arrows, setArrows] = useContext(ArrowsContext)
+  useEffect(() => {
+    if (content.arrows.length) {
+      const ato = {};
+      content.arrows.forEach((arrow, i) => {
+        ato[i + arrow.start + arrow.end] = arrow;
+      })
+      setArrows(prevArrows => ({...prevArrows, ...ato}));
+    }
+  }, [])
+  
+  const arrowsRef = useRef(content.arrows)
   const [node, setNode] = useState({
-    arrows: arrows,
+    arrows: content.arrows,
     arrowsRef: arrowsRef.current,
     className: content.className + (parent === null ? " node" : " node child"),
     id: content.id, 
@@ -20,13 +32,20 @@ function Node({children, content, s, setS, parent=null}) {
   useEffect(() => {
     setNode({...node, styleRef: styleRef})
   }, [])
-  const arws = []
-  node.arrows.forEach((arrow, i) => {
-    arws.push(<Xarrow key={i + node.id} {...arrow} /*start={node.id}*/ />)
-  })
+
   useEffect(() => {
     rename(selected, node, setNode, s, setS)
   }, [selected, s])
+  
+  useEffect(() => {
+    if (content.arrows.length) {
+      const ato = {};
+      node.arrows.forEach((arrow, i) => {
+        ato[i + arrow.start + arrow.end] = arrow;
+      });
+      setArrows(prevArrows => ({...prevArrows, ...ato}));
+    }
+  }, [node]);
 
   return (
     <div
@@ -34,14 +53,13 @@ function Node({children, content, s, setS, parent=null}) {
       className={node.className}
       style={{...node.style}} 
       onMouseLeave={() => {
-	  setSelected(parent)
+	      setSelected(parent)
       }}  
       onMouseEnter={() => {
         setSelected(node)
       }} 
     >
       {children}
-      {arws}
     </div>
   )
 }

@@ -19,11 +19,13 @@ const GitHub = (props) => {
   return (
     <DraggableNode setS={setS} {...props} node={node} >
       <div >
-	GitHub
-	<div className={"github"} >
-	  <Main s={s} parent={node} />
-	  <Dev s={s} parent={node} />
-	</div>
+        {/* <div>
+          GitHub
+        </div> */}
+        <div className={"github-branches"} >
+          <Dev s={s} parent={node} />
+          <Main s={s} parent={node} />
+        </div>
       </div>
     </DraggableNode>
   )

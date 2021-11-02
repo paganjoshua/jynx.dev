@@ -5,8 +5,8 @@ const Develop = (props) => {
   const id = "control-develop"
   const node = {
     arrows: [
-      {color: 'var(--dev)', light: 'var(--dev-light)', start: id, end: 'registry', startAnchor: 'left', endAnchor: 'right', 
-	      headSize: 3, _cpx1Offset: -15, _cpx2Offset: -15
+      {color: 'var(--dev)', light: 'var(--dev-light)', start: id, end: 'registry', startAnchor: 'auto', endAnchor: 'auto', 
+	      headSize: 3, _cpy1Offset: 0, _cpy2Offset: 0
       },
     ],
     id: id, 

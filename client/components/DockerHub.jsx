@@ -5,7 +5,7 @@ const DockerHub = (props) => {
   const id = "dockerhub"
   const node = {
     arrows: [
-      {color: 'var(--deploy)', light:'var(--deploy-light)', start: id, end: 'control-nginx', startAnchor: 'bottom', endAnchor: 'top', 
+      {color: 'var(--deploy)', light:'var(--deploy-light)', start: id, end: 'control-nginx', startAnchor: 'auto', endAnchor: 'auto', 
 	      headSize: 3
       },
     ],

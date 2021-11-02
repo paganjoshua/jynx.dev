@@ -1,11 +1,11 @@
 import * as React from "react"
-import Square from "./components/Square";
+import Arrows from "./components/Arrows.jsx";
 
 const App = () => {
 	console.log("RENDER App");
 	return (
-		<div style={{width: '100%', height: '100%' }} >
-			<Square />
+		<div className={"canvas-wrapper"} style={{width: '100%', height: '100%' }} >
+			<Arrows />
 		</div>
 	)
 }

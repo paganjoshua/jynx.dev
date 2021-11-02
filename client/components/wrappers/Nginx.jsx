@@ -1,14 +1,13 @@
 import React from 'react'
-import Node from '../Node.jsx'
 
 function Nginx(props) {
   return (
-	<Node {...props} content={props.content} >
+	<div className={"wrapper-content " + props.content.id} >
 	    {props.children}
-	  <div className={"wrapper"} style={{background: 'rgb(0, 150, 57)', color: 'white'}} >
-	    Nginx
-	  </div>
-	</Node>
+		<div className={"wrapper"} style={{background: 'rgb(0, 150, 57)', color: 'white'}} >
+			Nginx
+		</div>
+	</div>
   )
 }
 
