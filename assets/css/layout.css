@@ -20,6 +20,17 @@ body,
 	--deploy-light: rgb(244, 240, 229);
 	--nginx: rgb(0, 150, 57);
 	--nginx-light: rgba(0, 150, 57, 0.1);
+	--b: #856a45;
+	--db: #2d2317;
+	--g2: #4d5a59;
+	--forest: #174841;
+	--terracotta: #b99480;
+	--rojo-dust: #ad7062;
+	--smoky-blue: #5a6d7d;
+	--smoky-dark-blue: #394b58;
+	--bronze: #4a4b45;
+	--purple-bronze: #665456;
+	--bright-silver: #f0f0f0;
 }
 
 * {
@@ -44,8 +55,8 @@ body {
 header {
 	height: auto;
 	padding: 0 var(--gutter);
-	background: var(--deploy-light);
-	color: var(--dev);
+	background: var(--smoky-blue);
+	color: var(--bright-silver);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -54,8 +65,6 @@ header {
 
 .top-header {
 	height: var(--headerHeight);
-	background: var(--dev);
-	color: var(--deploy-light);
 	position: sticky;
 	top: 0;
 }
@@ -152,15 +161,17 @@ header a {
 }
 
 .active .lifter:link, .active .lifter:visited {
-	border-bottom-color: var(--dev);
+	border-bottom-color: var(--bright-silver);
 	font-weight: bold;
 }
 .active .lifter:hover, .lifter:hover {
-	border-bottom-color: var(--deploy);
-	color: var(--deploy);
+	border-bottom-color: silver;
+	color: silver;
 }
 
 .logo {
+	color: var(--ansible-light);
+	font-size: xxx-large;
 	place-self: center;
 	padding: 2rem;
 	padding-top: 0;
@@ -193,11 +204,11 @@ main {
 
 article .lifter {
 	min-height: 12rem;
-	border-color: var(--deploy);
+	border-color: var(--b);
 	border-radius: 2px;
 	border-top: none;
 	box-shadow: 0px 3px 5px rgb(0 0 0 / 0.2);
-	color: var(--deploy);
+	color: var(--b);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -206,8 +217,8 @@ article .lifter {
 }
 
 article .lifter:hover {
-	border-color: var(--deploy);
-	color: var(--dev);
+	border-color: var(--purple-bronze);
+	color: var(--purple-bronze);
 	box-shadow: 0px 5px 7px rgb(0 0 0 / 0.3);
 	transform: scale(1.01);
 }
@@ -644,7 +655,7 @@ article a:hover {
 }
 
 .certs {
-	background-color: var(--dev);
+	background-color: var(--darkness);
 	padding: 4rem;
 	margin: calc(-1 * var(--gutter));
 	margin-top: 0;
