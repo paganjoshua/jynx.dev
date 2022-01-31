@@ -655,24 +655,48 @@ article a:hover {
 }
 
 .certs {
+  width: 100vw;
 	background-color: var(--darkness);
 	padding: 4rem;
 	margin: calc(-1 * var(--gutter));
 	margin-top: 0;
 	margin-bottom: 0;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
+}
+
+.certs-container {
+  display: grid;
+  grid: 1fr / 1fr 1fr;
+  gap: 3rem;
+  margin: 0 6vw;
+}
+
+@media screen and (orientation:portrait) {
+  .certs-container {
+    grid: 1fr / 1fr;
+  }
 }
 
 .certs .badge {
-	width: 40vw;
+	width: 100%;
+}
+
+.cs-wrapper {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
 }
 
 .certs .cs {
-	width: 10vw;
-	height: 10vw;
-	align-self: center;
+	width: fit-content;
+	height: fit-content;
+	place-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-name {
+  text-align: center;
+  color: #ffffff;
 }
 
 footer {

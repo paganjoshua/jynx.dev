@@ -117,15 +117,33 @@
 		const computedHeaderHeight = window.getComputedStyle(document.documentElement).getPropertyValue('--headerHeight');
 		const headerHeight = computedHeaderHeight.split('rem')[0]
 		let bhScaledHeight = headerHeight * scale;
+		const checkFromAbove = bhRectBottom - (2 * bhScaledHeight);
+		const checkFromBelow = bhRectBottom - bhScaledHeight;
+		let above = true;
 		
 		// Closure here allows measuring against initial bhRectBottom
 		// and prevents us from recomputing the above values
 		return () => {
 			let scrTop = document.documentElement.scrollTop;
-			if (scrTop > bhRectBottom - bhScaledHeight) {
+			if (above) {
+				if (scrTop > checkFromAbove) {
+					th.style.visibility = "visible";
+				} else {
+					th.style.visibility = "hidden";
+				}
+			} else {
+				if (scrTop > checkFromBelow) {
+					th.style.visibility = "visible";
+				} else {
+					th.style.visibility = "hidden";
+				}
+			}
+			if (scrTop > checkFromBelow) {
 				th.style.zIndex = 2;
+				above = false;
 			} else {
 				th.style.zIndex = 0;
+				above = true;
 			}
 		}
 	}
@@ -181,12 +199,17 @@
 			</article>
 		</main>
 		<section class="certs" >
-			<a href="https://rhtapps.redhat.com/certifications/badge/verify/VBMNPKHD6YQ236RBLKT6B4UXMUAEQU3CUPSQX2KSDXT6RW46LQ3T7ULZ55KZZ56SKO7EQ3ETTLYZQ4U5NQYTCNA62RUWOCM34WWBUYQ=" target="_blank" rel="noopener noreferrer">
-				<img class="badge" src="/assets/VBMNPKHD6YQ236RBLKT6B4UXMUAEQU3CUPSQX2KSDXT6RW46LQ3T7ULZ55KZZ56SKO7EQ3ETTLYZQ4U5NQYTCNA62RUWOCM34WWBUYQ=.png" alt="RedHat Certified System Administrator Badge">
-			</a>
-			<a class="cs" href="https://www.codesmith.io" target="_blank" rel="noopener noreferrer">
-				<img src="/assets/cs-logo.png" alt="Codesmith Logo">
-			</a>
+      <div class="certs-container">
+        <a href="https://rhtapps.redhat.com/certifications/badge/verify/VBMNPKHD6YQ236RBLKT6B4UXMUAEQU3CUPSQX2KSDXT6RW46LQ3T7ULZ55KZZ56SKO7EQ3ETTLYZQ4U5NQYTCNA62RUWOCM34WWBUYQ=" target="_blank" rel="noopener noreferrer">
+          <img class="badge" src="/assets/VBMNPKHD6YQ236RBLKT6B4UXMUAEQU3CUPSQX2KSDXT6RW46LQ3T7ULZ55KZZ56SKO7EQ3ETTLYZQ4U5NQYTCNA62RUWOCM34WWBUYQ=.png" alt="RedHat Certified System Administrator Badge">
+        </a>
+        <div class="cs-wrapper">
+          <a class="cs" href="https://www.codesmith.io" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/cs-logo/cs-logo-165.png" alt="Codesmith Logo" srcset="/assets/cs-logo/cs-logo-83.png 83w, /assets/cs-logo/cs-logo-165.png 165w, /assets/cs-logo/cs-logo-248.png 248w, /assets/cs-logo/cs-logo-330.png 330w, /assets/cs-logo/cs-logo-413.png 413w, /assets/cs-logo/cs-logo-495.png 495w" sizes="(max-width: 600px) 83px, (max-width: 900px) 165px, (max-width: 1200px) 248px, (max-width: 1500px) 330px, (max-width: 1800px) 413px, 495px">
+          </a>
+          <h1 class="cs-name">Codesmith</h1>
+        </div>
+      </div>
 		</section>
 	</div>
 {{end}}
