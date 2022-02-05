@@ -13,6 +13,12 @@
 			</nav>
 		</div>
 		<nav class="icon-nav" >
+      <div class="portrait-menu">
+        <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="">
+            <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+            </path>
+        </svg>
+      </div>
 			<ul >
 				<li class="" >
 				<a class="lifter" href="https://linkedin.com/in/joshuajpagan" target="_blank" rel="noopener noreferrer" >
@@ -52,5 +58,45 @@
 			</ul>
 		</nav>
 	</div>
+  <div class="portrait-main-nav-wrapper collapsed" style="">
+    <nav class="main-nav collapsed" style="/*! width: 100%; */">
+      <ul >
+        <li ><a class="lifter" href="/">Home</a></li>
+        <li ><a class="lifter" href="/assets/resume.pdf">Resume</a></li>
+        <li ><a class="lifter" href="/system">System</a></li>
+      </ul>
+    </nav>
+  </div> 
+  <script type="text/javascript">
+    const th = document.querySelector(".top-header");
+
+    const thMenuButton = th.querySelector(".portrait-menu");
+    
+    const toggleTop = togglePortraitMenu(th);
+
+    thMenuButton.addEventListener("click", toggleTop);
+    
+    function togglePortraitMenu(hdr) {
+      const portraitMenu = hdr.querySelector(".portrait-main-nav-wrapper");
+      const mNav = portraitMenu.querySelector(".main-nav");
+      const h = window.getComputedStyle(mNav).getPropertyValue("height");
+
+      return () => {
+
+        portraitMenu.classList.toggle("collapsed");
+        mNav.classList.toggle("collapsed");
+
+        if (portraitMenu.classList.contains("collapsed")) {
+
+          portraitMenu.style.height = 0;
+              
+        } else {
+
+          portraitMenu.style.height = h;
+
+        }
+      }
+    }
+  </script>
 </header>
 {{end}}

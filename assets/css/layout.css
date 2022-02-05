@@ -93,6 +93,22 @@ header .top-nav {
 	z-index: 1;
 }
 
+.portrait-menu {
+  display: none;
+  padding: 0 1rem;
+  fill: var(--bright-silver);
+}
+
+@media screen and (orientation:portrait) {
+  .icon-nav ul {
+    display: none;
+  }
+
+  .portrait-menu {
+    display: block;
+  }
+}
+
 nav {
 	height: 100%;
 	display: flex;
@@ -115,6 +131,88 @@ nav {
 	justify-content: center;
 	position: sticky;
 	top: 0;
+}
+
+.portrait-main-nav-wrapper {
+  display: none;
+}
+
+@media screen and (orientation:portrait) {
+  .top-header {
+    height: min-content;
+  }
+
+  .bottom-header .portrait-main-nav-wrapper.collapsed {
+    margin-bottom: var(--headerHeight);
+  }
+
+  .bottom-header .logo {
+    position: absolute;
+    top: var(--headerHeight);
+    z-index: 10;
+  }
+
+  .main-nav-wrapper .main-nav,
+  .bottom-header>.main-nav{
+    display: none;
+  }
+
+  .portrait-main-nav-wrapper {
+    display: flex;
+    justify-content: end;
+    height: 0;
+    transition: height .25s, margin .12s ease-in-out;
+  }
+
+  .portrait-main-nav-wrapper .main-nav {
+    height: min-content;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 1rem;
+    padding-top: 0;
+    border-top: 1px solid silver;
+    transition: opacity .35s, padding .35s ease-in-out;
+  }
+
+  .portrait-main-nav-wrapper .collapsed {
+    opacity: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .portrait-main-nav-wrapper ul {
+    flex-direction: column;
+    width: 35%;
+    grid-gap: 0;
+  }
+
+  .portrait-main-nav-wrapper li {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    justify-content: start;
+    width: 100%;
+    border-bottom: 1px solid silver;
+  }
+
+  .portrait-main-nav-wrapper a {
+    justify-content: start;
+    width: 100%;
+    padding: 0;
+    padding-right: 10%;
+  }
+
+  .portrait-main-nav-wrapper .lifter {
+    border: none;
+    border-right: .2rem solid transparent;
+  }
+
+  .active .lifter:link, .active .lifter:visited {
+    border-right-color: var(--bright-silver);
+  }
+
+  .active .lifter:hover, .lifter:hover {
+    border-right-color: silver;
+  }
 }
 
 ul {
