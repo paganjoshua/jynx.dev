@@ -1,7 +1,7 @@
 {{define "header"}}
 <header class="home-top-header top-header" >
 	<div class="top-nav" >
-		<h1>[<:>]</h1>
+	  <a class="logo" href="/" >[<:>]</a>
 		<div class="main-nav-wrapper">
 			<nav class="main-nav" >
 				<ul >
@@ -67,6 +67,11 @@
     </nav>
   </div> 
 </header>
+	<a class="logo abs-logo" href="/" >
+		<div>[<:>]</div>
+	</a>
+	<div class="bg-filler" >
+	</div>
 <header class="bottom-header" >
 	<div class="top-nav" >
 		<h1>jynx.dev</h1>
@@ -125,9 +130,7 @@
       </ul>
     </nav>
   </div> 
-	<div class="logo" >
-		<div>[<:>]</div>
-	</div>
+</header>
 	<nav class="main-nav" >
 		<ul >
 			<li ><a class="lifter" href="/system">System</a></li>
@@ -135,7 +138,6 @@
 			<li ><a class="lifter" href="/assets/resume.pdf">Resume</a></li>
 		</ul>
 	</nav>
-</header>
 <script type="text/javascript" >
 	function scrollHeaderClosureWrapper() {
 		const th = document.querySelector(".home-top-header");
@@ -160,12 +162,6 @@
 		const checkFromBelow = bhHeight - thHeight;
 		let scrTop = document.documentElement.scrollTop;
 		let above = scrTop < checkFromBelow ? true : false;
-
-    console.log(`\
-      bhHeight: ${bhHeight} \
-      thHeight: ${thHeight} \
-      above: ${above} \
-    `)
 		
 		// Closure here allows measuring against initial bhRectBottom
 		// and prevents us from recomputing the above values
@@ -199,57 +195,11 @@
 	let scrollHeaderHandler = scrollHeaderClosureWrapper();
 	window.addEventListener("scroll", scrollHeaderHandler);
 
-  function orientation() {
-    console.log("orientation")
-    window.removeEventListener("scroll", scrollHeaderHandler)
-    scrollHeaderHandler = scrollHeaderClosureWrapper()
-    window.addEventListener("scroll", scrollHeaderHandler)
-  }
-
-  window.visualViewport.addEventListener("resize", orientation)
 </script>
-  <script type="text/javascript">
-    const th = document.querySelector(".top-header")
-    const bh = document.querySelector(".bottom-header")
-
-    const thMenuButton = th.querySelector(".portrait-menu");
-    const bhMenuButton = bh.querySelector(".portrait-menu");
-
-    const toggleTop = togglePortraitMenu(th);
-    const toggleBottom = togglePortraitMenu(bh);
-
-    thMenuButton.addEventListener("click", toggleTop);
-    bhMenuButton.addEventListener("click", toggleBottom);
-    
-    function togglePortraitMenu(hdr) {
-        const portraitMenu = hdr.querySelector(".portrait-main-nav-wrapper");
-        const mNav = portraitMenu.querySelector(".main-nav");
-        const h = window.getComputedStyle(mNav).getPropertyValue("height");
-      return () => {
-            
-        portraitMenu.classList.toggle("collapsed");
-        mNav.classList.toggle("collapsed");
-            
-        if (portraitMenu.classList.contains("collapsed")) {
-
-          portraitMenu.style.height = 0;
-
-        } else {
-
-          portraitMenu.style.height = h;
-        }
-
-        // Must call orientation after height has finished transitioning 
-        // TODO set height transition as css var
-        setTimeout(orientation, 250)
-      }
-    }
-
-  </script>
 {{end}}
 {{define "content"}}
 	<div class="content" >
-		<main >
+		<main class="home-main" >
 			<article class="home-system" >
 				<a class="lifter" href="/system" >
 					<h5 class="title" >
@@ -305,4 +255,187 @@
       </div>
 		</section>
 	</div>
+  <script>
+    if (navigator.userAgent.includes("Mobi")) {
+      document.querySelector(".home-main").classList.toggle("mobi");
+      document.querySelectorAll("article .lifter").forEach(lifter => {
+          lifter.classList.toggle("mobi");
+      })
+    }
+  </script>
+  <script type="text/javascript">
+    //const th = document.querySelector(".top-header")
+    const bh = document.querySelector(".bottom-header")
+
+    //const thMenuButton = th.querySelector(".portrait-menu");
+    const bhMenuButton = bh.querySelector(".portrait-menu");
+
+    //const toggleTop = togglePortraitMenu(th);
+    let toggleBottom    = togglePortraitMenu(bh);
+    let toggleNoTrans   = togglePortraitMenu(bh, false);
+    let toggleNoChange  = togglePortraitMenu(bh, false, false);
+
+    //thMenuButton.addEventListener("click", toggleTop);
+    bhMenuButton.addEventListener("click", toggleBottom);
+    
+    function togglePortraitMenu(hdr, transition = true, change = true) {
+        const portraitMenu = hdr.querySelector(".portrait-main-nav-wrapper");
+        const mNav = portraitMenu.querySelector(".main-nav");
+        const content = document.querySelector(".content");
+        const header = hdr.querySelector(".top-nav");
+
+        const headerHeight = parseFloat(window.getComputedStyle(header).getPropertyValue("height"));
+        const menuHeight = parseFloat(window.getComputedStyle(mNav).getPropertyValue("height"));
+
+        const bgFiller = document.querySelector(".bg-filler");
+
+      const cnt           = document.querySelector(".content");
+      const HEIGHT_RM_DUR   = "height 0s linear";
+      const HEIGHT_ADD_DUR  = "height var(--transDuration) linear";
+      const MARGIN_RM_DUR   = "margin-top 0s linear";
+      const MARGIN_ADD_DUR  = "margin-top var(--transDuration) linear";
+      return () => {
+            
+            if (transition) {
+        // Reapply Transition Duration
+        bgFiller.style.transition     = HEIGHT_ADD_DUR;
+        bh.style.transition           = HEIGHT_ADD_DUR;
+        portraitMenu.style.transition = HEIGHT_ADD_DUR;
+        cnt.style.transition          = MARGIN_ADD_DUR;
+
+                }
+
+            if (change == true) {
+        portraitMenu.classList.toggle("collapsed");
+        mNav.classList.toggle("collapsed");
+
+                }
+        /*content.classList.toggle("trans-open");*/
+        /*content.classList.toggle("trans-close");*/
+            
+        let scrTop = document.documentElement.scrollTop;
+        if (portraitMenu.classList.contains("collapsed")) {
+          // Closing
+
+          portraitMenu.style.height = "0px";
+          content.style.marginTop = "0px";
+
+          if (scrTop < headerHeight) {
+            // Above bgFiller
+            bgFiller.style.height = `${headerHeight*2}px`;
+          }
+
+          bgFiller.style.height = `${headerHeight*2}px`;
+          hdr.style.height = `${headerHeight}px`;
+
+        } else {
+          // Opening
+          portraitMenu.style.height = `${menuHeight}px`;
+
+          // compensate for .bg-filler if not scrolled past it
+          if (scrTop < headerHeight) {
+            // Above bgFiller
+            bgFiller.style.height = `${headerHeight*2 + (menuHeight-headerHeight)}px`;
+            //content.classList.remove("trans-below");
+            /*content.style.marginTop = `${menuHeight - (headerHeight - scrTop)}px`;*/
+          } else {
+            // Below bgFiller, adjust margin
+            //content.classList.add("trans-below")
+            content.style.marginTop = `${menuHeight}px`;
+          }
+
+          hdr.style.height = `${headerHeight + menuHeight}px`;
+        }
+
+        // Must call orientation after height has finished transitioning 
+        // TODO set height transition as css var
+            setTimeout(() => {
+                  orientation()
+                  if (transition) {
+          // Remove Transition Duration
+          bgFiller.style.transition     = HEIGHT_RM_DUR;
+          bh.style.transition           = HEIGHT_RM_DUR;
+          portraitMenu.style.transition = HEIGHT_RM_DUR;
+          cnt.style.transition          = MARGIN_RM_DUR;
+
+                      }
+              }, 250)
+      }
+    }
+
+  </script>
+  <script type="text/javascript">
+    window.visualViewport.addEventListener("resize", orientation)
+
+    function orientation() {
+      console.log("orientation")
+
+      window.removeEventListener("scroll", scrollHeaderHandler);
+      scrollHeaderHandler = scrollHeaderClosureWrapper();
+      window.addEventListener("scroll", scrollHeaderHandler);
+
+      bhMenuButton.removeEventListener("click", toggleBottom);
+      toggleBottom = togglePortraitMenu(bh);
+      toggleNoTrans = togglePortraitMenu(bh, false);
+      toggleNoChange = togglePortraitMenu(bh, false, false);
+      bhMenuButton.addEventListener("click", toggleBottom);
+    }
+  </script>
+  <script type="text/javascript">
+    const MQ = window.matchMedia("screen and (orientation:landscape)");
+    MQ.addEventListener("change", landscape);
+
+    function landscape(e) {
+      const bgFiller      = document.querySelector(".bg-filler");
+      const portraitMenu  = bh.querySelector(".portrait-main-nav-wrapper");
+      const cnt           = document.querySelector(".content");
+
+      const HEIGHT_RM_DUR   = "height 0s linear";
+      const HEIGHT_ADD_DUR  = "height var(--transDuration) linear";
+      const MARGIN_RM_DUR   = "margin-top 0s linear";
+      const MARGIN_ADD_DUR  = "margin-top var(--transDuration) linear";
+
+      console.log("in landscape")
+
+      // Changed Orientation to Landscape
+      if (e.matches) {
+
+        console.log("matches:", e.matches)
+          // Remove Transition Duration
+          //bgFiller.style.transition     = HEIGHT_RM_DUR;
+          //bh.style.transition           = HEIGHT_RM_DUR;
+          //portraitMenu.style.transition = HEIGHT_RM_DUR;
+          //cnt.style.transition          = MARGIN_RM_DUR;
+
+
+        // Portrait Menu is Currently Open
+        if (!portraitMenu.classList.contains("collapsed")) {
+
+          console.log("closing")
+
+          // Close Portrait Menu
+          //toggleBottom();
+            toggleNoTrans();
+
+        }
+
+        // Clear Manually-Set Height
+        bh.style.height = "";
+            
+      // Changed Orientation to Portrait
+      } else {
+
+        console.log("matches:", e.matches)
+        toggleNoChange();
+            
+        // Reapply Transition Duration
+        //bgFiller.style.transition     = HEIGHT_ADD_DUR;
+        //bh.style.transition           = HEIGHT_ADD_DUR;
+        //portraitMenu.style.transition = HEIGHT_ADD_DUR;
+        //cnt.style.transition          = MARGIN_ADD_DUR;
+
+      }
+      console.log("end landscape")
+    } 
+  </script>
 {{end}}

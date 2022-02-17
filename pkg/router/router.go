@@ -2,6 +2,7 @@ package router
 
 import (
 	"net/http"
+  "strings"
 
 	"github.com/paganjoshua/jynx.dev/pkg/template"
 
@@ -44,10 +45,18 @@ func (rtr Router) HandleAbout(w http.ResponseWriter, r *http.Request, _ httprout
 }
 
 func (rtr Router) HandleSystem(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var home template.View
-	home.Template = rtr.Templates["system.html"]
-	home.Title = "System"
+  var system template.View
 
-	home.Template.Execute(w, home)
+  userAgent := r.UserAgent()
+
+  if !strings.Contains(userAgent, "Mobi") {
+    system.Template = rtr.Templates["system.html"]
+    system.Title = "System"
+  } else {
+    system.Template = rtr.Templates["no-mobile-support.html"]
+    system.Title = "No Mobile Support"
+  }
+
+  system.Template.Execute(w, system)
 }
 
