@@ -1,0 +1,27 @@
+{{define "header"}}
+{{template "error_header" .}}
+{{end}}
+{{define "content"}}
+	<main class="content Nobile" >
+		<article class="error-content">
+      <h1 class="error-code">
+        [<403:Forbidden>]
+      </h1>
+      <h2>
+        Sorry... We're getting to it
+      </h2>
+      <p class="error-message">
+        The System Map is not currently supported on this device, come back on desktop or tablet to check it out
+      </p>
+    </article>
+    <nav class="redirect">
+      <ul >
+        <li ><a class="" href="/">home</a></li>
+        <li ><a class="" href="javascript:history.back()">BACK</a></li>
+      </ul>
+    </nav>
+	</main>
+{{end}}
+{{define "footer"}}
+{{template "error_footer" .}}
+{{end}}
