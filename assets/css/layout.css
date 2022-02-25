@@ -6,7 +6,7 @@ body,
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: system-ui;
+	font-family: Cantarell, system-ui;
 	--gutter: 1.5vw;
 	/* headerHeight always to be 'rem' for script calculations*/
 	--headerHeight: 5rem;
@@ -164,6 +164,11 @@ header .top-nav {
 	align-items: center;
 }
 
+.top-nav h1 {
+  font-weight: 500;
+  font-size: 38px;
+}
+
 .top-nav .icon-nav {
 	z-index: 1;
 	justify-content: flex-end;
@@ -251,14 +256,14 @@ body>.main-nav ul {
 /*Home*/
 .home-main {
 	display: grid;
-	margin: 4vw;
+	margin: 4vw 4vw;
   grid-template-areas:
     "system resume"
     "about projects"
   ;
   grid-template-rows: auto;
   grid-template-columns: repeat(2, 1fr);
-	grid-gap: calc(1.25 * var(--gutter));
+	grid-gap: calc(1.75 * var(--gutter));
 }
 
 .home-main.mobi {
@@ -269,24 +274,38 @@ body>.main-nav ul {
 }
 
 .home-main .lifter {
-	min-height: 12rem;
-	border-color: var(--b);
-	border-radius: 2px;
-	border-top: none;
+	border-color: #bbadbb;
+	border-color: #757e7b;
 	box-shadow: 0px 3px 5px rgb(0 0 0 / 0.2);
 	color: var(--b);
+	transition: all .05s ease-in-out;
+
+  /*Box*/
+	min-height: 12rem;
+	border-radius: 2px;
+	border-top: none;
+
+  /*Layout*/
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: flex-start;
-	transition: all .05s ease-in-out;
 }
 
-.home-main .lifter:hover {
-	border-color: var(--purple-bronze);
-	color: var(--purple-bronze);
-	box-shadow: 0px 5px 7px rgb(0 0 0 / 0.3);
-	transform: scale(1.01);
+@media (hover: hover) {
+  .home-main .lifter:hover {
+    background: #98a9a9;
+    color: var(--bright-silver);
+    box-shadow: 0px 5px 7px rgb(0 0 0 / 0.3);
+    /*
+    transform: scale(1.01);
+    */
+  }
+
+}
+
+.card {
+
 }
 
 .home-system {
@@ -304,14 +323,25 @@ body>.main-nav ul {
 
 .title {
 	color: inherit;
-	font-size: 1.35rem;
-	padding-bottom: calc(.75 * var(--gutter));
+	font-size: 24px;
+  font-weight: 300;
+	/*padding: calc(.75 * var(--gutter)) 0;
+  margin-left: 1.25rem;
+  */
+}
+
+.card p {
+  font-size: 17px;
+  font-weight: 300;
+  margin: 1.25rem 0;
 }
 
 .certs {
 	background-color: var(--darkness);
 	padding: 3rem;
 	margin: 63px calc(-1 * var(--gutter));
+  padding: 3rem 0;
+  background-color: #98a9a9;
 }
 
 .certs-container {
@@ -353,8 +383,8 @@ body>.main-nav ul {
 }
 
 .about-header {
-	background-color: var(--darkness);
-	color: var(--rojo-dust);
+  background-color: #98a9a9;
+	color: var(--bright-silver);
 	text-align: start;
 
   /*Box*/
@@ -371,7 +401,7 @@ body>.main-nav ul {
 
 .about-header .hr-title {
 	align-self: flex-end;
-	color: silver;
+	color: var(--bright-silver);
 	font-weight: normal;
 }
 
@@ -391,7 +421,7 @@ body>.main-nav ul {
 
 .about-header h2 {
   color: var(--bright-silver);
-  color: silver;
+  color: var(--darkness);
 	padding: 1rem 0;
 	font-weight: 300;
   line-height: 1.5;
@@ -1033,9 +1063,20 @@ footer p {
 	main {
 		grid-template-columns: repeat(1, 1fr);
 	}
+
+  .home-main .lifter {
+    padding: .75rem;
+    padding-bottom: 0;
+  }
+
 }
 
 @media screen and (max-width: 700px) {
+  html,
+  body,
+  :root {
+    --headerHeight: 4rem;
+  }
 /*Content*/
 /*Home*/
   .home-main {
@@ -1078,7 +1119,85 @@ footer p {
   }
 }
 
-@media (min-width: 1200px) {
-	main {
+@media (min-width: 600px) {
+  .home-main {
+    margin: 4vw 6vw;
+  }
+
+  .home-main .lifter {
+    padding: .75rem;
+    padding-bottom: 0;
+  }
+
+}
+
+@media (min-width: 700px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .card p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 800px) {
+  .home-main {
+    margin: 4vw 8vw;
+  }
+
+  .home-main .lifter {
+    padding: 1rem;
+    padding-bottom: 0;
+  }
+
+}
+
+@media (min-width: 1000px) {
+	.home-main {
+    margin: 4vw 10vw;
 	}
+
+  .home-main .lifter {
+    padding: 1.25rem;
+    padding-bottom: 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .card p {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 1200px) {
+	.home-main {
+    margin: 4vw 12vw;
+	}
+
+  .home-main .lifter {
+    padding: 1.25rem;
+    padding-bottom: 0;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .card p {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1500px) {
+	.home-main {
+    margin: 4vw 15vw;
+	}
+
+  .home-main .lifter {
+    padding: 1.5rem;
+    padding-bottom: 0;
+  }
 }
