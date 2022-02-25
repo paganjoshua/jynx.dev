@@ -132,7 +132,7 @@
 {{define "content"}}
 	<div class="content" >
 		<main class="home-main" >
-			<article class="home-system" >
+			<article class="card home-system" >
 				<a class="lifter" href="/system" >
 					<h5 class="title" >
 						System
@@ -142,7 +142,7 @@
 					</p>
 				</a>
 			</article>
-			<article class="home-about" >
+			<article class="card home-about" >
 				<a class="lifter" href="/about" >
 					<h5 class="title" >
 						About
@@ -152,7 +152,7 @@
 					</p>
 				</a>
 			</article>
-			<article class="home-resume" >
+			<article class="card home-resume" >
 				<a class="lifter" href="/assets/resume.pdf" >
 					<h5 class="title" >
 						Resume
@@ -162,7 +162,7 @@
 					</p>
 				</a>
 			</article>
-			<article class="home-projects" >
+			<article class="card home-projects" >
 				<a class="lifter" href="/" >
 					<h5 class="title" >
 						Projects
@@ -315,6 +315,7 @@
   </script>
   <script type="text/javascript">
     const MQ = window.matchMedia("screen and (orientation:landscape)");
+    MQ.addEventListener("change", orientation);
     MQ.addEventListener("change", landscape);
 
     function landscape(e) {
@@ -349,11 +350,14 @@
           //toggleBottom();
             toggleNoTrans();
 
-        }
+            } else {
+                  toggleNoChange();
+                }
+
 
         // Clear Manually-Set Height
         bh.style.height = "";
-            
+        bgFiller.style.height = "";    
       // Changed Orientation to Portrait
       } else {
 
