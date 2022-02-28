@@ -21,6 +21,7 @@ func (r *Router) NewRouter() {
 	router.GET("/", r.HandleHome)
 	router.GET("/about", r.HandleAbout)
 	router.GET("/system", r.HandleSystem)
+	router.GET("/design", r.HandleDesign)
 	router.ServeFiles("/client/*filepath", http.Dir("client"))
 	router.ServeFiles("/css/*filepath", http.Dir("assets/css"))
 	router.ServeFiles("/assets/*filepath", http.Dir("assets"))
@@ -42,6 +43,14 @@ func (rtr Router) HandleAbout(w http.ResponseWriter, r *http.Request, _ httprout
 	home.Title = "About"
 
 	home.Template.Execute(w, home)
+}
+
+func (rtr Router) HandleDesign(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	var design template.View
+	design.Template = rtr.Templates["design.html"]
+	design.Title = "Design"
+
+	design.Template.Execute(w, design)
 }
 
 func (rtr Router) HandleSystem(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {

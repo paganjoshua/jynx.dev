@@ -22,7 +22,7 @@ func populateTemplates() map[string]*template.Template {
 	const basePath = "assets/templates"
 	tmplMap := make(map[string]*template.Template)
 	layout := template.Must(template.ParseFiles(basePath + "/_layout.html"))
-	template.Must(layout.ParseFiles(basePath + "/_header.html", basePath + "/_footer.html", basePath + "/_error_footer.html", basePath + "/_error_header.html"))
+	template.Must(layout.ParseFiles(basePath + "/_header.html", basePath + "/_footer.html", basePath + "/_error_footer.html", basePath + "/_error_header.html", basePath + "/_article.html"))
 	contentPath := filepath.Join(basePath + "/content")
 	log.Println(contentPath)
 	dir, err := os.ReadDir(contentPath)

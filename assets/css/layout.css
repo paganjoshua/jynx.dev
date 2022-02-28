@@ -73,6 +73,14 @@ p {
 	margin: 1.25rem;
 }
 
+a {
+  color: var(--forest);
+}
+
+a:visited {
+  color: #98a9a9;
+}
+
 /*Utility*/
 .lifter {
 	padding: 0 1rem;
@@ -116,10 +124,12 @@ p {
 	padding-top: 0;
 	display: flex;
 	place-content: center;
+  letter-spacing: .16rem;
 }
 
 a.logo {
   text-decoration: none;
+  color: var(--bright-silver);
 }
 
 .error a.logo {
@@ -132,6 +142,8 @@ header,
 footer {
   background: var(--forest);
 	color: var(--bright-silver);
+  /*Set z so system-map doesn't overlap*/
+  z-index: 1;
 }
 
 header.error,
@@ -192,6 +204,10 @@ header .top-nav {
 	justify-content: center;
 	position: sticky;
 	top: 0;
+}
+
+.main-nav a {
+  color: var(--bright-silver);
 }
 
 /*Home*/
@@ -374,15 +390,15 @@ body>.main-nav ul {
   color: #ffffff;
 }
 
-/*About*/
-.about-alignment-wrapper {
+/*Article*/
+.article-alignment-wrapper {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.about-header {
+.article-header {
   background-color: #98a9a9;
 	color: var(--bright-silver);
 	text-align: start;
@@ -392,6 +408,7 @@ body>.main-nav ul {
   margin: 0 calc(-1 * var(--gutter));
 
   /*Layout*/
+  align-self: stretch;
 	display: flex;
 	flex-direction: column;
 
@@ -399,19 +416,19 @@ body>.main-nav ul {
 	padding: 2rem 20%;
 }
 
-.about-header .hr-title {
+.article-header .hr-title {
 	align-self: flex-end;
 	color: var(--bright-silver);
 	font-weight: normal;
 }
 
-.about-header-hr {
+.article-header-hr {
 	border: none;
 	border-top: 1px solid silver;
 	margin: 1rem 0;
 }
 
-.about-header h1 {
+.article-header h1 {
   display: inline;
 	font-weight: 400;
 
@@ -419,7 +436,7 @@ body>.main-nav ul {
 	font-size: 3rem;
 }
 
-.about-header h2 {
+.article-header h2 {
   color: var(--bright-silver);
   color: var(--darkness);
 	padding: 1rem 0;
@@ -427,24 +444,20 @@ body>.main-nav ul {
   line-height: 1.5;
 }
 
-.about-header .engineer {
-  white-space: nowrap;
-}
-
 /*Nowrap "System Administrator" in About Me Title*/
 @media (max-width: 400px) {
-  .about-header .rhcsys-admin {
+  .article-header .rhcsys-admin {
     white-space: nowrap;
   }
 }
 @media (min-width: 700px) and (max-width: 800px) {
-  .about-header .rhcsys-admin {
+  .article-header .rhcsys-admin {
     white-space: nowrap;
   }
 }
 /*-----------------------------------------------*/
 
-.about-container {
+.article-container {
   /*Box*/
 	width: auto;
 	padding: 2rem 20%;
@@ -455,23 +468,53 @@ body>.main-nav ul {
 	place-content: flex-start;
 }
 
-.about-container h2,
-.about-container h3 {
+.article-container h2,
+.article-container h3 {
 	color: var(--darkness);
 }
 
-.about-container p {
+.article-container p {
 	margin-left: 0;
 	font-size: 18px;
 	line-height: 28px;
 	color: rgb(68, 64, 62);
 }
 
-.about-container blockquote {
+.article-container blockquote {
 	width: var(--group-width);
 	padding: 0 2rem;
 	border-left: solid rgb(120, 115, 115);
 	line-height: 28px;
+}
+
+/*About*/
+.article-header .engineer {
+  white-space: nowrap;
+}
+
+/*Design*/
+.design .article-container p:first-child {
+  font-weight: 700;
+}
+
+.design ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+
+.design li {
+  display: flex;
+  flex-direction: column;
+}
+
+.design li:first-child {
+  margin-top: 1rem;
+}
+
+.design li p {
+  margin: 0;
 }
 
 /* No Mobile Support Page */
@@ -1105,16 +1148,16 @@ footer p {
   }
 
 /*About*/
-  .about-header,
-  .about-container {
+  .article-header,
+  .article-container {
     padding: 1rem 8%;
   }
 
-  .about-header h1 {
+  .article-header h1 {
     font-size: 2rem;
   }
 
-  .about-header h2 {
+  .article-header h2 {
     font-size: 1rem;
   }
 }
