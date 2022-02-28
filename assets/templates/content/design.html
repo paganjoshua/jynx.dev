@@ -1,0 +1,136 @@
+{{define "article-class"}}
+design
+{{end}}
+
+{{define "hr-title"}}
+Design
+{{end}}
+
+{{define "article-title"}}
+<h1>
+Thoughts on Software Design
+</h1>
+{{end}}
+
+{{define "article-desc"}}
+  <h2>
+    Context is everything
+  </h2>
+{{end}}
+
+{{define "article-content"}}
+        <p>
+        When designing systems or software there are many considerations to weigh, and more often than not you have to start building before you know most of them. 
+        <br>Regardless, I try to keep these ideas floating around my mind while programming 
+        </p>
+				<p>
+        As a <i>developer</i>, I believe in innovation after convention, that is, cleverness is costly unless necessary and convention is built on the success of an ecosystem.<br>
+        <br>As an <i>engineer</i>, I believe in creating tools that solve problems created by conventions that have outlived their scope of innovation in an ever-growing ecosystem.<br>
+          <br>Knowing when to wear which hat is one of the many keys to building successful software.
+				</p>
+				<h2>Maintainability</h2>
+        <p>
+        It's really all just about maintainability, this is the highest cost of code, but means very different things depending on the team, environment, stack, timeline, etc.
+        <br>
+        These are general, language agnostic ideas that are once again, highly depend on the context.
+        </p>
+				<h3>Readability</h3>
+				<p>
+					The developer is the only necessary resource for software. This is obviously hyperbole, but the principle holds; write code to be read, not executed.
+          <br>
+          Small changes and quick iteration is the way forward, and to that effect code should be read like a book, it should tell a story at a glance, and, to extend the metaphor, if the developer has to go to a different library to checkout a different book just to get to the next page the development process will stutter. Definitions should be as much as possible, layed out in order of use; <code>main</code> (or equivalent) should be at the top of the page, and the first function it uses should be defined directly below, in this fashion the story will unfold organically.
+				</p>
+					<blockquote>
+						"The idea is that another programmer (including your future self) can glance down a single column and understand the expected flow of the code."
+            <br>
+            <a href="https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88" target="_blank" rel="noopener noreferrer">
+              <i>- Mat Ryer</i>
+            </a>
+
+					</blockquote>
+				<p>
+          It's not about increasing the developer's cognitive capactity, it's about removing cognitive load from inappropriate sources; it's the same reason you shouldn't text and drive, it's not that you aren't capable of doing it, you're just worse at it when you do.
+				</p>
+				<h3>Simplicity</h3>
+				<p>
+					There is a difference between simplicity of syntax and simplicity of logic. If a developer has a hard time following the logic of a program, its too complex, if a developer has a hard time reading a line of code, they need to go to the docs. There is of course a balance here, we've all seen some comically convoluted oneliners that are absolutely unreadable, but that has more to do with the readability of a program, when I refer to simplicity I mean that of logic. I like the advice of the <a href="https://golang.org/ref/mem#tmp_1" >Golang Memory Model</a> 
+					<blockquote>
+						"... If you must read the rest of this document to understand the behavior of your program, you are being too clever.
+            <br>
+						Don't be clever."
+					</blockquote>
+				</p>
+				<h3>Modularity</h3>
+				<p>
+				You never know what is on the horizon for a project, and you never know what will become of the technology you are using, whether it be new product requirements that call for a more suitable framework, or the organization that maintains a piece of your stack changes its terms of service or even discontinues their product altogether, good software is built on reusable, blind components flexible enough to swap implementation detail without rewriting your entire codebase. This approach keeps development and transitions sane and downtime to a minimum when surprises come, which they inevitably will.
+				</p>
+        <p>
+        However, this is all in a perfect world where everything is as simple as it sounds, which it's not, and it isn't. I think the idea that your database or framework <i>isn't</i> a part of your business logic is a bit naive. No matter how perfectly abstracted your code, changing the stack you've built on for years is <i>never</i> going to be a simple plug-and-play. There is only every unexpected everything.
+        </p>
+        <p>
+        I think the core of the idea of modular/abstracted code is really trying to get at easier testing, simpler refactoring, and quicker additions/removals. Good abstraction is about fewer abstractions and well designed contracts.
+        </p>
+        <h2>Excellent Articles & Talks on Software Design</h2>
+        <ul>
+          <li>
+            <h4>Kat Zien</h4>
+            <p>
+            <a href="https://www.youtube.com/watch?v=oL6JBUk6tj0" target="_blank" rel="noopener noreferrer">
+              How Do You Structure Your Go Apps
+            </a>
+            </p>
+          </li>
+          <li>
+            <h4>Mat Ryer</h4>
+            <p>
+            <a href="https://pace.dev/blog/2018/05/09/how-I-write-http-services-after-eight-years.html" target="_blank" rel="noopener noreferrer">
+              How I Write HTTP Services After 8 Years
+            </a>
+            </p>
+          </li>
+          <li>
+            <h4>Peter Bourgon</h4>
+            <p>
+            <a href="https://www.youtube.com/watch?v=NX0sHF8ZZgw" target="_blank" rel="noopener noreferrer">
+              Go + Microservice = Go Kit
+            </a>
+            </p>
+          </li>
+          <li>
+            <h4>Ben Johnson</h4>
+            <p>
+            <a href="https://www.gobeyond.dev/standard-package-layout/" target="_blank" rel="noopener noreferrer">
+              Standard Package Layout
+            </a>
+            <a href="https://www.gobeyond.dev/packages-as-layers/" target="_blank" rel="noopener noreferrer">
+              Packages as Layers
+            </a>
+            <a href="https://www.gobeyond.dev/wtf-dial" target="_blank" rel="noopener noreferrer">
+              WTF Dial
+            </a>
+            </p>
+          </li>
+          <li>
+            <h4>Bill Kennedy</h4>
+            <p>
+            Not really just on design, but all his articles on Ardan Labs'
+            <a href="https://www.ardanlabs.com/all-posts" target="_blank" rel="noopener noreferrer">
+              Blog
+            </a>
+            are excellent
+            </p>
+          </li>
+          <li>
+            <h4>Dave Cheney</h4>
+            <p>
+            <a href="https://dave.cheney.net/2016/08/20/solid-go-design" target="_blank" rel="noopener noreferrer">
+              SOLID Go Design
+            </a>
+            </p>
+          </li>
+        </ul>
+{{end}}
+{{define "content"}}
+{{template "article" .}}
+
+{{end}}

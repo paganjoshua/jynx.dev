@@ -1,62 +1,44 @@
+{{define "article-class"}}
+about
+{{end}}
+
+{{define "hr-title"}}
+About Me
+{{end}}
+
+{{define "article-title"}}
+  <div class="fullstack">
+    <h1>
+      Fullstack Software 
+    </h1>
+    <h1 class="engineer">
+      Engineer, and
+    </h1>
+  </div>
+  <div class="rhcsa">
+    <h1>
+      RedHat Certified 
+    </h1>
+    <h1 class="rhcsys-admin">
+      System Administrator
+    </h1>
+  </div>
+{{end}}
+
+{{define "article-desc"}}
+  <h2>
+    Focused primarily on tools, services, and systems operating in and around container contexts within Linux environments, coming from a background in web development
+  </h2>
+{{end}}
+
+{{define "article-content"}}
+				<p>
+				With the ever-growing stacks that software live on, and the lines of responsibility between developer/operations/infrastructure bluring daily, "Full Stack" means different things in different contexts and has become a somewhat ambiguous term.
+        <br>So when I say "full stack", I simply mean I am comfortable enough within a range of responsibilities to jump in and be useful, i.e. from system administration, infrastructure, devops, orchestration, to backend server implementations and business logic all the way to frontend web frameworks and design.
+        <br>I created the <a href="/system">System</a> application to more tangibly give a wholistic impression of where I can work, and with which technologies I created the system that floats this website. 
+				</p>
+{{end}}
+
 {{define "content"}}
-	<div class="content" >
-		<div class="about-alignment-wrapper" >
-			<div class="about-header">
-        <h3 class="hr-title" >[&lt;About Me&gt;]</h3>
-				<hr class="about-header-hr" >
-        <div class="fullstack">
-          <h1>
-            Fullstack Software 
-          </h1>
-          <h1 class="engineer">
-            Engineer, and
-          </h1>
-        </div>
-        <div class="rhcsa">
-          <h1>
-            RedHat Certified 
-          </h1>
-          <h1 class="rhcsys-admin">
-            System Administrator
-          </h1>
-        </div>
-				<h2>
-					Focused primarily on tools, services, and systems operating in and around container contexts within Linux environments, coming from a background in web development
-				</h2>
-			</div>
-			<div class="about-container" >
-				<!-- <p>
-					As a developer, I believe in innovation after convention, that is, cleverness is costly unless necessary and convention is built on the success of an ecosystem. As an engineer, I believe in creating tools which solve the problems created by technology that has outlived it's scope of innovation. Knowing when to wear which hat is one of the many keys to building successful software.
-				</p> -->
-				<p>
-				"Full Stack" is sort of an ambiguous term, and some believe it doesn't really exist, which in a sense I agree with, but with ever growing stack that software lives on, and the lines between responsibility bluring daily there aren't always enough terms to quickly and accurately categorize ourselves. So when I say "full stack" for myself, I do not imply that I am a specialist in every technology implemented in every level of the environment, that would be ridiculous, I simply mean I am comfortable enough within a range of responsibilities to jump in and be useful. I created the <a href="/system">System</a> application to more tangibly give a wholistic impression of where I can work, and with what technologies I have used to create the system that floats this website. 
-				</p>
-				<p>
-					When designing systems or software there are many considerations to weigh, and for me this process is the longest and toughest, but when I am developing I try to keep these principles at the forefront of my programming process. 
-				</p>
-				<h2>Modularity</h2>
-				<p>
-					This is arguably a design category but I try to remember these for my code as well, it helps guide my implementation.
-					You never know what is on the horizon for a project, and you never know what will become of the technology you are using, whether it be new product requirements that call for a more suitable framework, or the organization that maintains a piece of your stack changes its terms of service or discontinues their product altogether, good software is built on reusable, blind components flexible enough to plug-and-play different implementation detail. This approach keeps development and transitions sane and downtime to a minimum when surprises come, which they inevitably will.
-				</p>
-				<h2>Maintainability</h2>
-				<h3>Readability</h3>
-				<p>
-					The developer is the only necessary resource for software. This is obviously hyperbole, but the principle holds; write code to be read, not executed. Small changes and quick iteration is the way forward, code should be read like a book, it should tell a story at a glance, and if the developer has to go to a different library to checkout a different book just to get to the next page the development process with stutter. Definitions should be as much as possible, layed out in order of use; <code>main</code> (or equivalent) should be at the top of the page, and the first function it uses should be defined directly below, in this fashion the story will unfold organically.
-				</p>
-				<h3>Simplicity</h3>
-				<p>
-					There is a difference between simplicity of syntax and simplicity of logic. If a developer has a hard time following the logic of a program, its too complex, if a developer has a hard time reading a line of code, they need to go to the docs. There is of course a balance here, we've all seen some comically convoluted oneliners that are absolutely unreadable, but that has more to do with the readabilit of a program, when I refer to simplicity I mean that of logic. I like the advice of the <a href="https://golang.org/ref/mem#tmp_1" >Golang Memory Model</a> 
-					<blockquote>
-						"... If you must read the rest of this document to understand the behavior of your program, you are being too clever.
-						Don't be clever."
-					</blockquote>
-				</p>
-				<h2>Cost/Context</h2>
-				<p>
-					Every decision has a price, namely time, and unfortunately "better" doesn't always make the cut.
-				</p>
-			</div>
-		</div>
-	</div>
+{{template "article" .}}
 {{end}}

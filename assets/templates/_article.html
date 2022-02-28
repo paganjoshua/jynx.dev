@@ -1,0 +1,17 @@
+{{template "article" .}}{{define "article"}}
+<div class="content {{template "article-class" .}}" >
+		<div class="article-alignment-wrapper" >
+			<div class="article-header">
+        <h3 class="hr-title" >
+          [&lt;{{template "hr-title" .}}&gt;]
+        </h3>
+				<hr class="article-header-hr" >
+        {{template "article-title" .}}
+        {{template "article-desc" .}}
+			</div>
+			<div class="article-container" >
+        {{template "article-content" .}}
+			</div>
+		</div>
+	</div>
+{{end}}
